@@ -1,10 +1,12 @@
 import { StatusBar } from 'react-native';
 
-import { NativeBaseProvider, Text } from 'native-base';
+import { NativeBaseProvider } from 'native-base';
 
 import { theme } from './src/Theme';
 
 import { Loading } from '@components/Loading';
+
+import { SignIn } from '@screens/SignIn';
 
 import {
   Karla_400Regular,
@@ -20,7 +22,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <StatusBar barStyle="default" />
-      {fontsLoaded ? <Text>Carregado</Text> : <Loading />}
+      {fontsLoaded ? <SignIn /> : <Loading />}
     </NativeBaseProvider>
   );
 }
