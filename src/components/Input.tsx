@@ -16,7 +16,7 @@ export const Input = ({ errorMessage, isInvalid, ...rest }: Props) => {
         borderRadius={6}
         w="full"
         bg="gray.700"
-        mt={4}
+        mt={2}
         isInvalid={isInvalidInput}
         {...rest}
       />
