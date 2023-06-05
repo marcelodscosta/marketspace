@@ -1,4 +1,6 @@
-import { Text, VStack } from 'native-base';
+import { NativeBaseProvider, Text, VStack } from 'native-base';
+
+import { theme } from './src/Theme';
 
 import {
   Karla_400Regular,
@@ -11,6 +13,12 @@ export default function App() {
     Karla_400Regular,
     Karla_700Bold,
   });
-  return <VStack><Text>Página Carregada</Text></VStack>
+  return (
+    <NativeBaseProvider theme={theme}>
+      <VStack>
+        <Text>Página Carregada</Text>
+      </VStack>
+    </NativeBaseProvider>
+  );
 
 }
