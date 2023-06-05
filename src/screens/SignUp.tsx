@@ -46,6 +46,7 @@ export const SignUp = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<DataFormProps>({
     resolver: yupResolver(userSignUpSchema),
@@ -53,6 +54,7 @@ export const SignUp = () => {
 
   const handleSignUp = (data: DataFormProps) => {
     console.log(data);
+    reset();
   };
 
   return (
@@ -139,6 +141,8 @@ export const SignUp = () => {
                 onChangeText={onChange}
                 value={value}
                 errorMessage={errors.password_confirmation?.message}
+                onSubmitEditing={handleSubmit(handleSignUp)}
+                returnKeyType="send"
               />
             )}
           />
