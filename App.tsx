@@ -1,7 +1,8 @@
-import { NativeBaseProvider, Text, VStack } from 'native-base';
+import { NativeBaseProvider, Text } from 'native-base';
 
 import { theme } from './src/Theme';
 
+import { Loading } from '@components/Loading';
 import {
   Karla_400Regular,
   Karla_700Bold,
@@ -15,10 +16,7 @@ export default function App() {
   });
   return (
     <NativeBaseProvider theme={theme}>
-      <VStack>
-        <Text>Página Carregada</Text>
-      </VStack>
+      {fontsLoaded ? <Text>Carregado</Text> : <Loading />}
     </NativeBaseProvider>
   );
-
 }
