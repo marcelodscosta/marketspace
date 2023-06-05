@@ -1,11 +1,40 @@
 import { Heading, ScrollView, Text, VStack } from 'native-base';
 
 import Logo from '@assets/logo.svg';
+
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
 import { InputIcon } from '@components/InputIcon';
 
+import * as yup from 'yup';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, useForm } from 'react-hook-form';
+
+type DataFormProps = {
+  email: string;
+  password: string;
+};
+
+const userSignInSchema = yup.object({
+  email: yup
+    .string()
+    .required('Informe um e-mail')
+    .email('Informe um e-mail válido'),
+  password: yup.string().required('Informe uma senha'),
+});
+
 export const SignIn = () => {
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<DataFormProps>({ resolver: yupResolver(userSignInSchema) });
+
+  const handleSignIn = (data: DataFormProps) => {
+    console.log(data);
+  };
+
   return (
     <VStack flex={1} bg="gray.700" alignItems="center">
       <ScrollView w="full" showsVerticalScrollIndicator={false}>
@@ -20,10 +49,35 @@ export const SignIn = () => {
             Acesse sua conta
           </Text>
 
-          <Input placeholder="E-mail" keyboardType="email-address" />
+          <Controller
+            control={control}
+            name="email"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder="E-mail"
+                keyboardType="email-address"
+                value={value}
+                onChangeText={onChange}
+                errorMessage={errors.email?.message}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange, value } }) => (
+              <InputIcon
+                placeholder="Senha"
+                value={value}
+                onChangeText={onChange}
+                errorMessage={errors.password?.message}
+                onSubmitEditing={handleSubmit(handleSignIn)}
+                returnKeyType="send"
+              />
+            )}
+          />
 
-          <InputIcon placeholder="Senha" />
-          <Button title="Entrar" />
+          <Button title="Entrar" onPress={handleSubmit(handleSignIn)} />
         </VStack>
 
         <VStack alignItems="center" w="full" px={8} mt={8} pt={4}>
