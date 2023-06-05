@@ -1,5 +1,10 @@
+import { Center, HStack, Heading, Text, VStack } from 'native-base';
+
 import LogoP from '@assets/logo_p.svg';
-import { Heading, Text, VStack } from 'native-base';
+
+import Pencil from '@assets/pencil-simple-line.svg';
+
+import { UserPhoto } from '@components/UserPhoto';
 
 export const SignUp = () => {
   return (
@@ -13,6 +18,15 @@ export const SignUp = () => {
           Crie sua conta e use o espaço para comprar
         </Text>
         <Text>itens variados e vender seus produtos</Text>
+      </VStack>
+
+      <VStack flex={1} alignItems="center" mt={8}>
+        <HStack alignItems="flex-end">
+          <UserPhoto size={32} />
+          <Center bg="blue.200" w={12} h={12} rounded="full" ml={-12}>
+            <Pencil />
+          </Center>
+        </HStack>
       </VStack>
     </VStack>
   );
