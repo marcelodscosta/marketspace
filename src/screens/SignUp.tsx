@@ -14,6 +14,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import * as yup from 'yup';
 
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
+
+import { useNavigation } from '@react-navigation/native';
+
 const userSignUpSchema = yup.object({
   name: yup
     .string()
@@ -43,6 +47,7 @@ type DataFormProps = {
 };
 
 export const SignUp = () => {
+  const { navigate } = useNavigation<AuthNavigatorRoutesProps>();
   const {
     control,
     handleSubmit,
@@ -55,6 +60,10 @@ export const SignUp = () => {
   const handleSignUp = (data: DataFormProps) => {
     console.log(data);
     reset();
+  };
+
+  const handleSignIn = () => {
+    navigate('signIn');
   };
 
   return (
@@ -164,6 +173,7 @@ export const SignUp = () => {
             title="Ir para o Login"
             variantColorFont
             bg="gray.500"
+            onPress={handleSignIn}
           />
         </VStack>
       </ScrollView>

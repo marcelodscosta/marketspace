@@ -11,6 +11,10 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
+
+import { useNavigation } from '@react-navigation/native';
+
 type DataFormProps = {
   email: string;
   password: string;
@@ -31,8 +35,14 @@ export const SignIn = () => {
     handleSubmit,
   } = useForm<DataFormProps>({ resolver: yupResolver(userSignInSchema) });
 
+  const { navigate } = useNavigation<AuthNavigatorRoutesProps>();
+
   const handleSignIn = (data: DataFormProps) => {
     console.log(data);
+  };
+
+  const createAccount = () => {
+    navigate('signUp');
   };
 
   return (
@@ -87,6 +97,7 @@ export const SignIn = () => {
             title="Criar uma conta"
             variantColorFont
             bg="gray.500"
+            onPress={createAccount}
           />
         </VStack>
       </ScrollView>

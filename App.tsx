@@ -11,7 +11,7 @@ import {
   Karla_700Bold,
   useFonts,
 } from '@expo-google-fonts/karla';
-import { SignUp } from '@screens/SignUp';
+import { Routes } from '@routes/index';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <StatusBar barStyle="default" />
-      {fontsLoaded ? <SignUp /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </NativeBaseProvider>
   );
 }
