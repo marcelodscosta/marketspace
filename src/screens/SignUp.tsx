@@ -1,3 +1,7 @@
+import { useState } from 'react';
+
+import { TouchableOpacity } from 'react-native';
+
 import { Center, HStack, Heading, ScrollView, Text, VStack } from 'native-base';
 
 import LogoP from '@assets/logo_p.svg';
@@ -17,6 +21,8 @@ import * as yup from 'yup';
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
 import { useNavigation } from '@react-navigation/native';
+
+import * as ImagePicker from 'expo-image-picker';
 
 const userSignUpSchema = yup.object({
   name: yup
@@ -47,6 +53,24 @@ type DataFormProps = {
 };
 
 export const SignUp = () => {
+  const [photo, setPhoto] = useState(
+    'https://uc5abeb140794f1a277863175ed5.previews.dropboxusercontent.com/p/thumb/AB7R0aqna2tgkhmY-BQntgoaPJJYYRiXW1MkXo5S15KG-CBE9bP2z2t0o7CWwMVPzqWR6z1g9YczqxVh_vlLjy2oqm0Dx8gq_Iqz-KsEa1WcLkfa8Vat4eZZQq6LkpWN5l8sIkxRHVvoyedhMwFEjx2_y2zNw2_9opp6G6bW_jPlq10BJlL8m5c1tBNILy6rLKWEXnneMxTG5fQIpg3Fg5oD8tp-ZJPVncehDzYWXOMzsjPAVhmD2E_Ad51vsaqsj_yY6XhLLiTOeZTCYOmHsPUAWU8eL5T6KWYN654c5eR5Y4gTMTprzKQ2jbao6fX-8ehWZS3erz0xukmQ0psxS6QEh2tBGmDRT63a_tPN-rcom6hRlB6YYfGEpJztHSOV7kqyvY7hM7WhQbrX6XBjI_QBUrhSBPtMzlZ8YcXgGk84mw/p.png',
+  );
+
+  const handleSelectPicker = async () => {
+    const photoSelected = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      quality: 1,
+      aspect: [4, 4],
+      allowsEditing: true,
+    });
+
+    if (photoSelected.canceled) {
+      return;
+    }
+    setPhoto(photoSelected.assets[0].uri);
+  };
+
   const { navigate } = useNavigation<AuthNavigatorRoutesProps>();
   const {
     control,
@@ -62,7 +86,7 @@ export const SignUp = () => {
     reset();
   };
 
-  const handleSignIn = () => {
+  const handleBackSignIn = () => {
     navigate('signIn');
   };
 
@@ -82,10 +106,12 @@ export const SignUp = () => {
 
         <VStack alignItems="center" mt={4} px={8}>
           <HStack alignItems="flex-end">
-            <UserPhoto size={24} />
-            <Center bg="blue.200" w={12} h={12} rounded="full" ml={-12}>
-              <Pencil />
-            </Center>
+            <UserPhoto size={24} source={{ uri: photo }} />
+            <TouchableOpacity onPress={handleSelectPicker}>
+              <Center bg="blue.200" w={12} h={12} rounded="full" ml={-12}>
+                <Pencil />
+              </Center>
+            </TouchableOpacity>
           </HStack>
 
           <Controller
@@ -173,7 +199,7 @@ export const SignUp = () => {
             title="Ir para o Login"
             variantColorFont
             bg="gray.500"
-            onPress={handleSignIn}
+            onPress={handleBackSignIn}
           />
         </VStack>
       </ScrollView>
