@@ -33,12 +33,14 @@ export const SignIn = () => {
     control,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm<DataFormProps>({ resolver: yupResolver(userSignInSchema) });
 
   const { navigate } = useNavigation<AuthNavigatorRoutesProps>();
 
   const handleSignIn = (data: DataFormProps) => {
     console.log(data);
+    reset();
   };
 
   const createAccount = () => {
