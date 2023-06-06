@@ -6,12 +6,13 @@ import { theme } from './src/Theme';
 
 import { Loading } from '@components/Loading';
 
+import { Routes } from '@routes/index';
+
 import {
   Karla_400Regular,
   Karla_700Bold,
   useFonts,
 } from '@expo-google-fonts/karla';
-import { Routes } from '@routes/index';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
