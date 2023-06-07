@@ -3,6 +3,7 @@ import { UserPhoto } from '@components/UserPhoto';
 
 import { HStack, Heading, Icon, Text, VStack, useTheme } from 'native-base';
 
+import { InputSearch } from '@components/InputSearch';
 import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
@@ -79,6 +80,8 @@ export const Home = () => {
       <Text fontFamily="heading" color="gray.300" mt={2}>
         Compre Produtos variados
       </Text>
+
+      <InputSearch />
     </VStack>
   );
 };
