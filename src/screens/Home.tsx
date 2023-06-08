@@ -1,7 +1,16 @@
 import { ButtonIcon } from '@components/ButtonIcon';
 import { UserPhoto } from '@components/UserPhoto';
 
-import { HStack, Heading, Icon, Text, VStack, useTheme } from 'native-base';
+import {
+  Center,
+  FlatList,
+  HStack,
+  Heading,
+  Icon,
+  Text,
+  VStack,
+  useTheme,
+} from 'native-base';
 
 import { AdCard } from '@components/AdCard';
 import { InputSearch } from '@components/InputSearch';
@@ -10,6 +19,7 @@ import { TouchableOpacity } from 'react-native';
 
 export const Home = () => {
   const { colors } = useTheme();
+  const data = ['1', '2', '3', '4', '5', ' 6'];
 
   return (
     <VStack flex={1} bg="gray.600" px={6}>
@@ -83,10 +93,22 @@ export const Home = () => {
       </Text>
 
       <InputSearch />
-
-      <HStack justifyContent="space-between">
-        <AdCard />
-      </HStack>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item}
+        renderItem={() => <AdCard />}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        columnWrapperStyle={{
+          justifyContent: 'space-between',
+          gap: 4,
+        }}
+        ListEmptyComponent={() => (
+          <Center mt={35}>
+            <Text fontSize="md">Não há itens</Text>
+          </Center>
+        )}
+      />
     </VStack>
   );
 };

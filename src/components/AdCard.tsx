@@ -5,7 +5,7 @@ import { UserPhoto } from './UserPhoto';
 
 export const AdCard = () => {
   return (
-    <VStack mt={3}>
+    <VStack mt={4} w="50%" pb={2}>
       <TouchableOpacity>
         <Image
           source={{
@@ -14,7 +14,7 @@ export const AdCard = () => {
           alt="produto anúncio"
           w={40}
           h={24}
-          rounded="sm"
+          rounded="xl"
           borderColor="gray.700"
           resizeMode="contain"
         />
@@ -25,6 +25,7 @@ export const AdCard = () => {
           justifyContent="space-between"
           mt={-24}
           mb={12}
+          w={40}
         >
           <UserPhoto
             size={8}
