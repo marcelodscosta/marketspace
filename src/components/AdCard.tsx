@@ -33,7 +33,7 @@ export const AdCard = () => {
             borderWidth={1}
             borderColor="gray.700"
           />
-          <ConditionProduct />
+          <ConditionProduct used />
         </HStack>
 
         <Text fontSize="sm">Tênis Branco</Text>

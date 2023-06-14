@@ -14,12 +14,14 @@ import {
 
 import { AdCard } from '@components/AdCard';
 import { InputSearch } from '@components/InputSearch';
+
 import { Feather } from '@expo/vector-icons';
+
 import { TouchableOpacity } from 'react-native';
 
 export const Home = () => {
   const { colors } = useTheme();
-  const data = ['1', '2', '3', '4', '5', ' 6'];
+  const data = ['1', '2', '3'];
 
   return (
     <VStack flex={1} bg="gray.600" px={6}>
@@ -67,7 +69,7 @@ export const Home = () => {
               size={6}
             />
             <VStack ml={2}>
-              <Heading fontSize="lg">4</Heading>
+              <Heading fontSize="lg">{data.length}</Heading>
               <Text fontSize="xs">anúncios ativos</Text>
             </VStack>
           </HStack>

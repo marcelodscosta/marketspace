@@ -54,7 +54,7 @@ type DataFormProps = {
 
 export const SignUp = () => {
   const [photo, setPhoto] = useState(
-    'https://uc5abeb140794f1a277863175ed5.previews.dropboxusercontent.com/p/thumb/AB7R0aqna2tgkhmY-BQntgoaPJJYYRiXW1MkXo5S15KG-CBE9bP2z2t0o7CWwMVPzqWR6z1g9YczqxVh_vlLjy2oqm0Dx8gq_Iqz-KsEa1WcLkfa8Vat4eZZQq6LkpWN5l8sIkxRHVvoyedhMwFEjx2_y2zNw2_9opp6G6bW_jPlq10BJlL8m5c1tBNILy6rLKWEXnneMxTG5fQIpg3Fg5oD8tp-ZJPVncehDzYWXOMzsjPAVhmD2E_Ad51vsaqsj_yY6XhLLiTOeZTCYOmHsPUAWU8eL5T6KWYN654c5eR5Y4gTMTprzKQ2jbao6fX-8ehWZS3erz0xukmQ0psxS6QEh2tBGmDRT63a_tPN-rcom6hRlB6YYfGEpJztHSOV7kqyvY7hM7WhQbrX6XBjI_QBUrhSBPtMzlZ8YcXgGk84mw/p.png',
+    'https://uc5abeb140794f1a277863175ed5.previews.dropboxusercontent.com/p/thumb/AB5qCgKCM-C9wF8Q1wB1B9FOL4NbpMLT_kVHv_JclhI5VJEn8tBjl2OMFhAfivwfwgYbGOYmfME1_KI2my1e5DyvJh_QXryspAlBgfDdqw29PsGS6MOXziCU7LcMAflaZxbaHTYQcnmYbmkMUM_6dHHIOHff12qRNM7PqBL_Nwl41YWXUzPj1rKSf3hzxPxEX5nlaL7SlewWAnI7_KbbiDad2emzZ23TKA-IArYmVwEp1IsJC0V9atZnpRR8XYvyssTBt0yeUPFZhIllgT0eKhO9jbY-GcMRv_y5OVpdIW_pS6LRLyHNvYnm09X3RaDEF6fXxY7NTPqvk8w9KJbFa0OgJ29vJ_LpU0vhHOw-vt_ig1plru65ovVVrUoVTBQL3oehzdqzkaGo1e177R9eG6mAhyb_f8PM6rKWHNLgJ1TUAA/p.png',
   );
 
   const handleSelectPicker = async () => {
@@ -106,7 +106,7 @@ export const SignUp = () => {
 
         <VStack alignItems="center" mt={4} px={8}>
           <HStack alignItems="flex-end">
-            <UserPhoto size={24} source={{ uri: photo }} />
+            <UserPhoto size={32} source={{ uri: photo }} />
             <TouchableOpacity onPress={handleSelectPicker}>
               <Center bg="blue.200" w={12} h={12} rounded="full" ml={-12}>
                 <Pencil />
