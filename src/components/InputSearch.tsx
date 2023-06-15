@@ -4,7 +4,11 @@ import SearchSvg from '@assets/magnifying-glass.svg';
 import FilterSvg from '@assets/sliders.svg';
 import { TouchableOpacity } from 'react-native';
 
-export const InputSearch = () => {
+type Props = {
+  onOpen?: () => void;
+};
+
+export const InputSearch = ({ onOpen }: Props) => {
   return (
     <HStack w="full" bg="gray.700" borderRadius={6} mt={2} py={2} px={3}>
       <Input
@@ -22,7 +26,7 @@ export const InputSearch = () => {
         <Text fontSize={32} color="gray.500" mx={1}>
           |
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onOpen}>
           <FilterSvg />
         </TouchableOpacity>
       </HStack>
