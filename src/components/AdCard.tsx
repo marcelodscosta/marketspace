@@ -1,12 +1,16 @@
 import { HStack, Heading, Image, Text, VStack } from 'native-base';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { ConditionProduct } from './ConditionProduct';
 import { UserPhoto } from './UserPhoto';
 
-export const AdCard = () => {
+type AdCardProps = TouchableOpacityProps & {
+  used?: boolean;
+};
+
+export const AdCard = ({ used, ...rest }: AdCardProps) => {
   return (
     <VStack mt={4} w="50%" pb={2}>
-      <TouchableOpacity>
+      <TouchableOpacity {...rest}>
         <Image
           source={{
             uri: 'https://mundialcalcados.vteximg.com.br/arquivos/ids/2415937-1000-1500/98g14769-1.jpg?v=638025815293430000',
@@ -33,7 +37,7 @@ export const AdCard = () => {
             borderWidth={1}
             borderColor="gray.700"
           />
-          <ConditionProduct used />
+          <ConditionProduct used={used} />
         </HStack>
 
         <Text fontSize="sm">Tênis Branco</Text>

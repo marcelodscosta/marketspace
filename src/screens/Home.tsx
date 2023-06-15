@@ -29,6 +29,9 @@ import { Feather } from '@expo/vector-icons';
 
 import ExitSvg from '@assets/x.svg';
 
+import { useNavigation } from '@react-navigation/native';
+import { AppNavigatorRoutesProps } from '@routes/app.routes';
+
 export const Home = () => {
   const { colors } = useTheme();
   const data = ['1', '2', '3'];
@@ -36,6 +39,8 @@ export const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclose();
 
   const [selectedCondition, setSelectedCondition] = useState('NOVO');
+
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   return (
     <VStack flex={1} bg="gray.600" px={6}>
@@ -113,7 +118,9 @@ export const Home = () => {
       <FlatList
         data={data}
         keyExtractor={(item) => item}
-        renderItem={() => <AdCard />}
+        renderItem={() => (
+          <AdCard used onPress={() => navigation.navigate('adDeails')} />
+        )}
         numColumns={2}
         showsVerticalScrollIndicator={false}
         columnWrapperStyle={{

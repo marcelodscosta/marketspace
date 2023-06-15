@@ -5,7 +5,6 @@ import {
 
 import { AdDetails } from '@screens/AdDetails';
 import { Home } from '@screens/Home';
-import { HomeFilter } from '@screens/HomeFilter';
 import { MyAds } from '@screens/MyAds';
 
 import HomeSvg from '@assets/house-regular.svg';
@@ -18,7 +17,6 @@ import { useTheme } from 'native-base';
 type AppRoutes = {
   home: undefined;
   myAds: undefined;
-  homeFilter: undefined;
   adDetails: undefined;
   signIn: undefined;
 };
@@ -62,12 +60,6 @@ export const AppRoutes = () => {
       <Screen
         name="adDeails"
         component={AdDetails}
-        options={{ tabBarButton: () => null }}
-      />
-
-      <Screen
-        name="homeFilter"
-        component={HomeFilter}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>
